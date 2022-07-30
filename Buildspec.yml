@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto17
+  build:
+    commands:
+      - echo Entered the build phase...
+      - mvn clean install -Dmaven.test.skip=true
+  post_build:
+    commands:
+      - echo Build completed successfully
+artifacts:
+  files:
+    - target/mama.earth-0.0.1-SNAPSHOT.jar
+    - scripts/*.sh
+    - appspec.yml
+  discard-paths: yes
